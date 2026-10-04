@@ -19,7 +19,7 @@ const About = () => {
                         </p>
                         <div className="about-stats-mini">
                             <div className="stat-mini">
-                                <span className="stat-number text-gradient">10+</span>
+                                <span className="stat-number text-gradient">40+</span>
                                 <span className="stat-label">Years of Trust</span>
                             </div>
                             <div className="stat-mini">
