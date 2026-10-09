@@ -23,5 +23,5 @@ main {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--accent-gold-dark);
+  background: var(--brand-green);
 }

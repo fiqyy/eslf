@@ -1,4 +1,5 @@
 import './Footer.css';
+import eslfLogo from '../assets/eslflogo.jpeg';
 
 const Footer = () => {
     const currentYear = new Date().getFullYear();
@@ -8,7 +9,9 @@ const Footer = () => {
             <div className="container">
                 <div className="footer-top">
                     <div className="footer-brand">
-                        <h2>ESLF<span className="text-gradient">.</span></h2>
+                        <a href="#home" className="footer-logo-link">
+                            <img src={eslfLogo} alt="Emad Soliman Law Firm Logo" className="footer-logo-img" />
+                        </a>
                         <p>Embracing Change with a Firm Vision. Comprehensive legal services tailored to your strategic goals.</p>
                     </div>
 

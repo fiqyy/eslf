@@ -14,7 +14,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle at center, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+    background: radial-gradient(circle at 50% 40%, rgba(67, 88, 57, 0.28) 0%, rgba(15, 21, 16, 0.8) 55%, var(--bg-primary) 100%);
     z-index: 1;
 }
 
@@ -27,8 +27,8 @@
     width: 100%;
     height: 100%;
     background-image:
-        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+        linear-gradient(rgba(124, 168, 107, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(124, 168, 107, 0.05) 1px, transparent 1px);
     background-size: 50px 50px;
     background-position: center center;
     z-index: 1;
@@ -46,7 +46,7 @@
     letter-spacing: -0.02em;
     margin-bottom: var(--spacing-lg);
     line-height: 1.1;
-    text-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    text-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
 }
 
 .hero-subtitle {
@@ -67,7 +67,7 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 1rem 2rem;
+    padding: 1rem 2.2rem;
     border-radius: 50px;
     font-family: var(--font-heading);
     font-weight: 600;
@@ -79,28 +79,32 @@
 }
 
 .btn-primary {
-    background: linear-gradient(135deg, var(--accent-gold), var(--accent-gold-dark));
-    color: #fff;
-    border: none;
-    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+    background: linear-gradient(135deg, var(--brand-green-light) 0%, var(--brand-green) 50%, var(--brand-green-dark) 100%);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 4px 20px rgba(67, 88, 57, 0.45);
 }
 
 .btn-primary:hover {
     transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(212, 175, 55, 0.5);
-    color: #fff;
+    box-shadow: 0 8px 30px rgba(124, 168, 107, 0.55);
+    background: linear-gradient(135deg, var(--brand-green-lighter) 0%, var(--brand-green-light) 50%, var(--brand-green) 100%);
+    color: #ffffff;
 }
 
 .btn-outline {
-    background: transparent;
+    background: rgba(255, 255, 255, 0.03);
     color: var(--text-primary);
-    border: 1px solid var(--accent-gold);
+    border: 1px solid var(--brand-green-light);
+    backdrop-filter: blur(8px);
 }
 
 .btn-outline:hover {
-    background: rgba(212, 175, 55, 0.1);
+    background: rgba(67, 88, 57, 0.25);
+    border-color: var(--brand-green-lighter);
     transform: translateY(-3px);
     color: var(--text-primary);
+    box-shadow: 0 4px 20px rgba(67, 88, 57, 0.3);
 }
 
 @media (max-width: 768px) {

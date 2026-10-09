@@ -26,7 +26,7 @@
     left: 0;
     width: 100%;
     height: 4px;
-    background: linear-gradient(90deg, var(--accent-gold), var(--accent-gold-dark));
+    background: linear-gradient(90deg, var(--brand-green-lighter), var(--brand-green));
     transform: scaleX(0);
     transform-origin: left;
     transition: transform var(--transition-normal);
@@ -52,8 +52,8 @@
 
 .field-card:hover .field-icon {
     transform: scale(1.1) rotate(5deg);
-    border-color: rgba(212, 175, 55, 0.4);
-    box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
+    border-color: rgba(124, 168, 107, 0.4);
+    box-shadow: 0 0 20px rgba(67, 88, 57, 0.35);
 }
 
 .field-title {
@@ -74,7 +74,7 @@
 .learn-more {
     font-family: var(--font-heading);
     font-weight: 600;
-    color: var(--accent-gold);
+    color: var(--brand-green-light);
     font-size: 0.95rem;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -85,6 +85,7 @@
 .field-card:hover .learn-more {
     opacity: 1;
     padding-left: 5px;
+    color: var(--brand-green-lighter);
 }
 
 /* Modal Styles */
@@ -94,7 +95,7 @@
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: rgba(10, 10, 10, 0.85);
+    background: rgba(9, 13, 10, 0.88);
     backdrop-filter: blur(10px);
     display: flex;
     justify-content: center;
@@ -119,7 +120,7 @@
     transform: translateY(20px) scale(0.95);
     opacity: 0;
     animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
@@ -132,7 +133,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle at top left, rgba(212, 175, 55, 0.05), transparent 70%);
+    background: radial-gradient(circle at top left, rgba(67, 88, 57, 0.2), transparent 70%);
     border-radius: inherit;
     pointer-events: none;
 }
@@ -158,8 +159,8 @@
 }
 
 .modal-close:hover {
-    background: rgba(212, 175, 55, 0.2);
-    color: var(--accent-gold);
+    background: rgba(67, 88, 57, 0.3);
+    color: var(--brand-green-lighter);
     transform: rotate(90deg);
 }
 
@@ -189,7 +190,7 @@
 .modal-title {
     font-size: 2rem;
     font-weight: 700;
-    color: var(--accent-gold);
+    color: var(--brand-green-lighter);
     line-height: 1.2;
 }
 

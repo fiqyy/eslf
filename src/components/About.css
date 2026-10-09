@@ -69,50 +69,94 @@
 .image-placeholder {
     width: 100%;
     height: 100%;
-    border-radius: 8px;
-    background: linear-gradient(145deg, var(--bg-tertiary), #1e202e);
+    border-radius: 12px;
+    background: linear-gradient(145deg, var(--bg-tertiary), #141d16);
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
+    border: 1px solid var(--glass-border);
 }
 
 .abstract-shape {
     position: absolute;
     border-radius: 50%;
-    filter: blur(40px);
-    opacity: 0.4;
+    filter: blur(50px);
+    opacity: 0.35;
     transition: all 5s ease-in-out infinite alternate;
 }
 
 .shape-1 {
-    width: 200px;
-    height: 200px;
-    background-color: var(--accent-gold);
-    top: -50px;
-    right: -50px;
+    width: 220px;
+    height: 220px;
+    background-color: var(--brand-green);
+    top: -40px;
+    right: -40px;
     animation: float 10s ease-in-out infinite;
 }
 
 .shape-2 {
-    width: 250px;
-    height: 250px;
-    background-color: var(--accent-blue);
-    bottom: -50px;
-    left: -50px;
+    width: 260px;
+    height: 260px;
+    background-color: var(--brand-green-light);
+    bottom: -60px;
+    left: -60px;
     animation: float 12s ease-in-out infinite reverse;
+}
+
+.about-logo-container {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
+    padding: 2rem;
+    text-align: center;
+}
+
+.about-logo-wrapper {
+    background: #ffffff;
+    padding: 1rem 1.8rem;
+    border-radius: 14px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), 0 0 20px rgba(124, 168, 107, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    transition: transform var(--transition-normal);
+}
+
+.about-logo-wrapper:hover {
+    transform: scale(1.04);
+}
+
+.about-brand-img {
+    max-width: 200px;
+    height: auto;
+    display: block;
+    object-fit: contain;
 }
 
 .image-overlay-text {
     font-family: var(--font-heading);
-    font-size: 1.5rem;
+    font-size: 1.35rem;
     font-weight: 700;
-    letter-spacing: 4px;
+    letter-spacing: 3px;
     text-transform: uppercase;
-    position: relative;
-    z-index: 10;
-    color: rgba(255, 255, 255, 0.8);
+    color: var(--text-primary);
+}
+
+.about-badge-tag {
+    display: inline-block;
+    padding: 0.35rem 1rem;
+    background: rgba(67, 88, 57, 0.3);
+    border: 1px solid var(--brand-green-light);
+    border-radius: 50px;
+    font-family: var(--font-heading);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--brand-green-lighter);
+    letter-spacing: 1px;
+    text-transform: uppercase;
 }
 
 @keyframes float {

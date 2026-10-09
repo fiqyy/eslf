@@ -1,7 +1,7 @@
 .footer-section {
-    background-color: #050608;
-    padding: 4rem 0 2rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    background-color: #060906;
+    padding: 4.5rem 0 2.5rem;
+    border-top: 1px solid var(--glass-border);
 }
 
 .footer-top {
@@ -10,25 +10,41 @@
     gap: 4rem;
     margin-bottom: 3rem;
     padding-bottom: 3rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid var(--glass-border);
 }
 
 .footer-brand {
     flex: 2;
-    max-width: 400px;
+    max-width: 420px;
 }
 
-.footer-brand h2 {
-    font-family: var(--font-heading);
-    font-size: 2rem;
-    font-weight: 800;
-    letter-spacing: 1px;
-    margin-bottom: 1rem;
+.footer-logo-link {
+    display: inline-block;
+    margin-bottom: 1.25rem;
+    text-decoration: none;
+}
+
+.footer-logo-img {
+    height: 46px;
+    width: auto;
+    object-fit: contain;
+    background: #ffffff;
+    padding: 5px 12px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all var(--transition-normal);
+}
+
+.footer-logo-link:hover .footer-logo-img {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(124, 168, 107, 0.4);
 }
 
 .footer-brand p {
-    color: var(--text-muted);
+    color: var(--text-secondary);
     font-size: 0.95rem;
+    line-height: 1.6;
 }
 
 .footer-links {
@@ -38,7 +54,9 @@
 .footer-title {
     font-size: 1.2rem;
     margin-bottom: 1.5rem;
-    color: #fff;
+    color: var(--text-primary);
+    font-family: var(--font-heading);
+    letter-spacing: 0.5px;
 }
 
 .footer-links ul {
@@ -51,12 +69,12 @@
 }
 
 .footer-links a {
-    color: var(--text-muted);
+    color: var(--text-secondary);
     transition: all var(--transition-fast);
 }
 
 .footer-links a:hover {
-    color: var(--accent-gold);
+    color: var(--brand-green-lighter);
     padding-left: 5px;
 }
 
@@ -69,6 +87,6 @@
 @media (max-width: 768px) {
     .footer-top {
         flex-direction: column;
-        gap: 2rem;
+        gap: 2.5rem;
     }
 }
