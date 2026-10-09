@@ -13,58 +13,67 @@ const Fields = () => {
 
     const fields: FieldData[] = [
         {
-            title: "Corporate",
+            title: "Corporate & Commercial",
             icon: "🏢",
-            desc: "Comprehensive legal support for businesses, including M&A and corporate governance.",
-            details: "We advise on some of the world's largest and most complex mergers and acquisitions transactions, equity offerings and share swapping.Our cross-border expertise and substantial breadth and depth of legal resources in key financial and business centres across the Middle East, Europe and the Americas, offers an unrivalled expertise and ability to deliver M&A transactions at both the local and international level.ESLF lawyers and consultants are experts at company incorporation, arranging and hosting the general assembly and board of directors� meetings as well as formulating internal resolutions and by laws."
+            desc: "Comprehensive legal support for enterprises, including M&A, restructuring, and governance.",
+            details: "We advise on complex domestic and cross-border mergers and acquisitions, equity offerings, joint ventures, and restructuring transactions. Our attorneys possess extensive depth in company incorporation, hosting general assemblies and board meetings, formulating internal bylaws, and navigating regulatory compliance across the Egyptian and MENA markets."
         },
         {
-            title: "Litigation",
+            title: "Litigation & Dispute Strategy",
             icon: "⚖️",
-            desc: "Robust representation in commercial, civil, and administrative disputes.",
-            details: "The litigation team combines market leading local capability in each of our regions with a unique ability to work efficiently with ESLF colleagues across our global network. We have expertise in litigation (including a strong trial capability), international and local arbitration. Our approach emphasises practical understanding of our clients' business problems and we have experience across every segment of the corporate and financial world. We specialise in managing complex cases involving multiple claims and parties. We also work closely with other ESLF practice areas to develop compliance initiatives and other techniques to help our clients reduce litigation risk."
+            desc: "Robust representation in commercial, civil, administrative, and appellate proceedings.",
+            details: "The ESLF litigation team combines market-leading local court advocacy with a strategic approach to client business problems. We specialize in managing complex multi-party claims, shareholder disputes, asset recovery, and commercial litigation, working closely across practice areas to mitigate regulatory and judicial risks."
         },
         {
-            title: "Alternative Dispute Resolution",
+            title: "Arbitration & Mediation (ADR)",
             icon: "🤝",
-            desc: "Expert handling of arbitration and mediation proceedings to resolve conflicts efficiently.",
-            details: "The firm begins advising the client about the alternative dispute resolution firstly through reconciliation efforts, then mediation and finally, as a last resort, litigation. This is carried out through specialized entities such as the International Chamber of Commerce (ICC) and the Cairo Regional Centre for International Commercial Arbitration (CRCICA). Alternatively, these solutions can be carried out through the offices of ESLF who can administer the dispute resolution through a fair and impartial process on an ad hoc basis. In this way, ESLF is careful to limit the exorbitant costs of using other arbitration authorities or entering into litigation cost as well as providing a fast service"
+            desc: "Expert handling of institutional arbitration (CRCICA, ICC) and private mediation.",
+            details: "We guide clients through alternative dispute resolution mechanisms, starting with reconciliation and mediation, through to institutional and ad hoc arbitration. Our lawyers regularly appear before leading arbitration forums such as the Cairo Regional Centre for International Commercial Arbitration (CRCICA) and the International Chamber of Commerce (ICC)."
         },
         {
-            title: "Intellectual Property Rights protection & licensing",
+            title: "Intellectual Property Rights",
             icon: "💡",
-            desc: "Protecting innovations, trademarks, and managing complex licensing agreements.",
-            details: "Our intellectual property specialists provide a flexible, one-stop service that can manage and protect your critical IP assets globally. The team of dedicated IP legal professionals has the resources and expertise you need to help protect and further your business interests.Advising on a full range of counselling and dispute resolution matters, including multi- jurisdictional IP litigation and arbitration, regional enforcement programmes and licensing programmes, our IP team is experienced in all the major financial and industrial centres across the Middle East, US and Europe.Local or cross - border, we can help you manage and resolve patents, trademarks, copyrights, designs and trade secret disputes.Our technical expertise and industry insight ensures we always focus on your commercial goals and objectives.Our industry experience includes financial services, computer hardware and software, computer systems and networks, biotechnology and pharmaceuticals, chemicals, automotive and aerospace, media and entertainment, telecom and consumer electronics.The firm's practice involves representation of clients in court and administrative proceedings. It has substantial experience in litigation of patents, trademarks, trade secrets and copyrights."
+            desc: "Protection for trademarks, patents, copyrights, trade secrets, and licensing agreements.",
+            details: "Our IP practice provides comprehensive protection, portfolio management, and enforcement for critical intellectual property assets. We handle trademark registration, patent litigation, anti-counterfeiting enforcement programs, technology transfer agreements, and complex licensing across diverse industrial and digital sectors."
         },
         {
-            title: "Consultancy",
+            title: "Strategic Legal Consultancy",
             icon: "📋",
-            desc: "Strategic legal advice tailored to your specific industry challenges and goals.",
-            details: "The firm provides its clients with the highest level of consultancy services through its global network of law firms and consultants across the Middle East, Europe and the US."
+            desc: "Tailored strategic counsel addressing regulatory landscapes, compliance, and risk management.",
+            details: "ESLF provides high-level legal consultancy services to multinational corporations, governmental bodies, and regional institutions. We deliver proactive regulatory roadmaps, legislative analyses, foreign investment advisory, and compliance frameworks customized to each client's strategic objectives."
         },
         {
-            title: "Contract management & drafting",
+            title: "Contract Management & Drafting",
             icon: "📝",
-            desc: "Meticulous drafting, review, and negotiation of all commercial agreements.",
-            details: "The team offers efficient contract management and drafting in a manner that the contract is tailor made for the client�s needs and requirements. The lawyers get involved from the stage of drafting, amending ending up with the signature of the contract and then the follow up on the contract implementation with its various clauses and stages."
+            desc: "Meticulous drafting, review, negotiation, and lifecycle management of commercial agreements.",
+            details: "Our contract attorneys provide rigorous contract lifecycle drafting and negotiation. From initial risk assessment and drafting tailored contractual covenants to execution and post-closing compliance, we safeguard our clients' rights and commercial value across all transactions."
         },
         {
-            title: "Real Estate",
+            title: "Real Estate & Infrastructure",
             icon: "🏗️",
-            desc: "Navigating complex property transactions, development projects, and zoning laws.",
-            details: "Acting for the real estate industry's leading players, we advise on the full range of real estate-related transactions.With an integrated network of leading companies, we have the commitment, resources and know-how to get the deals done, whatever and wherever they are.Forward thinking and commercial in our approach, with a recognised ability to deliver complex deals, we handle the entire property 'life-cycle' from the initial acquisition, development, leasing, joint venturing and financing through to the final exit.These services are over and above the firm's commitment to represent the client governmental and administrative authorities in obtaining the necessary permits and licences while maintaining impartiality in relation to the existing laws and regulations."
+            desc: "Navigating major property transactions, development projects, zoning, and licensing.",
+            details: "Acting for property developers, major investment funds, and industrial leaders, we advise on the entire real estate lifecycle—from site acquisition, zoning approvals, and governmental licensing to construction contracting, commercial leasing, and asset disposition."
         }
     ];
 
     useEffect(() => {
         if (selectedField) {
             document.body.style.overflow = 'hidden';
+            document.body.style.touchAction = 'none';
         } else {
             document.body.style.overflow = '';
+            document.body.style.touchAction = '';
         }
+
+        const handleKeyDown = (e: KeyboardEvent) => {
+            if (e.key === 'Escape') setSelectedField(null);
+        };
+        window.addEventListener('keydown', handleKeyDown);
 
         return () => {
             document.body.style.overflow = '';
+            document.body.style.touchAction = '';
+            window.removeEventListener('keydown', handleKeyDown);
         };
     }, [selectedField]);
 
@@ -80,8 +89,9 @@ const Fields = () => {
         <section id="fields" className="fields-section section-padding">
             <div className="container">
                 <div className="text-center mb-xl reveal">
+                    <div className="section-eyebrow">Practice Expertise</div>
                     <h2 className="section-title">Our <span className="text-gradient">Practice Areas</span></h2>
-                    <p className="section-subtitle">Delivering specialized legal solutions across diverse sectors.</p>
+                    <p className="section-subtitle">Delivering specialized legal solutions and tactical counsel across core industry sectors.</p>
                 </div>
 
                 <div className="fields-grid">
@@ -89,14 +99,17 @@ const Fields = () => {
                         <div
                             className="field-card glass-card reveal"
                             key={index}
-                            style={{ transitionDelay: `${index * 0.1}s` }}
+                            style={{ transitionDelay: `${index * 0.08}s` }}
                             onClick={() => openModal(field)}
+                            role="button"
+                            tabIndex={0}
+                            onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') openModal(field); }}
                         >
                             <div className="field-icon">{field.icon}</div>
                             <h3 className="field-title">{field.title}</h3>
                             <p className="field-desc">{field.desc}</p>
                             <div className="field-action">
-                                <span className="learn-more">Learn more &rarr;</span>
+                                <span className="learn-more">Explore Details &rarr;</span>
                             </div>
                         </div>
                     ))}
@@ -105,7 +118,7 @@ const Fields = () => {
 
             {/* Modal Popup */}
             {selectedField && (
-                <div className="modal-overlay" onClick={closeModal}>
+                <div className="modal-overlay" onClick={closeModal} role="dialog" aria-modal="true">
                     <div className="modal-content glass-card" onClick={(e) => e.stopPropagation()}>
                         <button className="modal-close" onClick={closeModal} aria-label="Close modal">
                             &times;
@@ -118,7 +131,12 @@ const Fields = () => {
                             <p>{selectedField.details}</p>
                         </div>
                         <div className="modal-footer">
-                            <button className="btn btn-outline" onClick={closeModal}>Close Details</button>
+                            <a href="#contact" className="btn btn-primary modal-cta-btn" onClick={closeModal}>
+                                Consult on this Practice Area
+                            </a>
+                            <button className="btn btn-outline modal-close-btn" onClick={closeModal}>
+                                Close
+                            </button>
                         </div>
                     </div>
                 </div>
