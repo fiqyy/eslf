@@ -104,7 +104,6 @@
     border-radius: 50%;
     filter: blur(55px);
     opacity: 0.35;
-    transition: all 5s ease-in-out infinite alternate;
 }
 
 .shape-1 {
@@ -129,9 +128,8 @@
     width: 180px;
     height: 180px;
     background-color: rgba(165, 212, 146, 0.4);
-    top: 40%;
-    left: 40%;
-    transform: translate(-50%, -50%);
+    top: calc(40% - 90px);
+    left: calc(40% - 90px);
     animation: float 8s ease-in-out infinite;
 }
 

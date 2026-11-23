@@ -3,20 +3,6 @@
     position: relative;
 }
 
-.text-center {
-    text-align: center;
-}
-
-.mb-xl {
-    margin-bottom: var(--spacing-xl);
-}
-
-.section-subtitle {
-    font-size: 1.2rem;
-    max-width: 600px;
-    margin: 0 auto;
-}
-
 .timeline {
     position: relative;
     max-width: 800px;

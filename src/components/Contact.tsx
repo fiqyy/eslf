@@ -1,3 +1,4 @@
+import type { CSSProperties } from 'react';
 import './Contact.css';
 
 const Contact = () => {
@@ -53,7 +54,7 @@ const Contact = () => {
                     </div>
 
                     {/* Contact Details Card */}
-                    <div className="contact-card glass-card details-card reveal" style={{ transitionDelay: '0.15s' }}>
+                    <div className="contact-card glass-card details-card reveal" style={{ '--reveal-delay': '0.15s' } as CSSProperties}>
                         <div className="card-header-flex">
                             <span className="card-icon-badge">⚖️</span>
                             <div>

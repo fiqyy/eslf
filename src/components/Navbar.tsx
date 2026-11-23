@@ -38,7 +38,18 @@ const Navbar = () => {
         return () => window.removeEventListener('keydown', handleKeyDown);
     }, []);
 
-    const toggleMenu = () => setMenuOpen(!menuOpen);
+    // Close the drawer when resizing/rotating to the desktop layout, otherwise
+    // the body scroll lock stays on with no visible way to release it.
+    useEffect(() => {
+        const desktop = window.matchMedia('(min-width: 993px)');
+        const handleChange = (e: MediaQueryListEvent) => {
+            if (e.matches) setMenuOpen(false);
+        };
+        desktop.addEventListener('change', handleChange);
+        return () => desktop.removeEventListener('change', handleChange);
+    }, []);
+
+    const toggleMenu = () => setMenuOpen(open => !open);
     const closeMenu = () => setMenuOpen(false);
 
     return (
@@ -53,14 +64,13 @@ const Navbar = () => {
                 {/* Mobile Backdrop */}
                 {menuOpen && <div className="nav-backdrop" onClick={closeMenu} />}
 
-                <nav className={`nav-links ${menuOpen ? 'active' : ''}`}>
+                <nav id="primary-navigation" className={`nav-links ${menuOpen ? 'active' : ''}`}>
                     <div className="mobile-menu-header">
                         <img src={eslfLogo} alt="ESLF" className="mobile-drawer-logo" />
                         <span className="mobile-tagline">Excellence in Legal Advocacy</span>
                     </div>
 
-                    <a href="#about" className="nav-link" onClick={closeMenu}>About Firm</a>
-                    <a href="#achievements" className="nav-link" onClick={closeMenu}>Achievements</a>
+                    <a href="#about" className="nav-link" onClick={closeMenu}>About The Firm</a>
                     <a href="#fields" className="nav-link" onClick={closeMenu}>Practice Areas</a>
 
                     <div className="mobile-nav-cta">
@@ -87,6 +97,8 @@ const Navbar = () => {
                     onClick={toggleMenu}
                     aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
                     aria-expanded={menuOpen}
+                    aria-controls="primary-navigation"
+                    type="button"
                 >
                     <span className="bar"></span>
                     <span className="bar"></span>

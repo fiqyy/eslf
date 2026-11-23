@@ -12,7 +12,7 @@ const About = () => {
                         <h3 className="about-subtitle">Embracing Change with an Unwavering Vision</h3>
 
                         <p>
-                            ESLF has achieved a record of success and growth that today makes it one of the leading firms in Egypt. With over 32 attorneys and consultants, the firm provides quality legal and consultancy services to a broad base of multinational, Egyptian and regional clients through its office in Egypt .
+                            ESLF has achieved a record of success and growth that today makes it one of the leading firms in Egypt. With over 32 attorneys and consultants, the firm provides quality legal and consultancy services to a broad base of multinational, Egyptian and regional clients through its office in Egypt.
                             The firm provides legal advice and advanced services to many of the most dynamic, local and multinational, corporations and has the knowledge and resources to deliver high quality legal services required.
                         </p>
                         <p>

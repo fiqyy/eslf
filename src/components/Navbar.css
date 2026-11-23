@@ -207,7 +207,9 @@
         align-items: stretch;
         padding: calc(2rem + env(safe-area-inset-top)) 1.75rem calc(2rem + env(safe-area-inset-bottom));
         gap: 0.5rem;
-        transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        /* visibility keeps off-screen links out of the tab order when closed */
+        visibility: hidden;
+        transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1), visibility 0s linear 0.4s;
         z-index: 999;
         box-shadow: -10px 0 40px rgba(0, 0, 0, 0.6);
         overflow-y: auto;
@@ -215,6 +217,8 @@
 
     .nav-links.active {
         right: 0;
+        visibility: visible;
+        transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1), visibility 0s;
     }
 
     .mobile-menu-header {

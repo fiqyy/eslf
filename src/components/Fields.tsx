@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef, type CSSProperties } from 'react';
 import './Fields.css';
 
 interface FieldData {
@@ -10,6 +10,8 @@ interface FieldData {
 
 const Fields = () => {
     const [selectedField, setSelectedField] = useState<FieldData | null>(null);
+    const closeBtnRef = useRef<HTMLButtonElement>(null);
+    const lastTriggerRef = useRef<HTMLElement | null>(null);
 
     const fields: FieldData[] = [
         {
@@ -57,13 +59,11 @@ const Fields = () => {
     ];
 
     useEffect(() => {
-        if (selectedField) {
-            document.body.style.overflow = 'hidden';
-            document.body.style.touchAction = 'none';
-        } else {
-            document.body.style.overflow = '';
-            document.body.style.touchAction = '';
-        }
+        if (!selectedField) return;
+
+        document.body.style.overflow = 'hidden';
+        document.body.style.touchAction = 'none';
+        closeBtnRef.current?.focus();
 
         const handleKeyDown = (e: KeyboardEvent) => {
             if (e.key === 'Escape') setSelectedField(null);
@@ -74,10 +74,13 @@ const Fields = () => {
             document.body.style.overflow = '';
             document.body.style.touchAction = '';
             window.removeEventListener('keydown', handleKeyDown);
+            // Return focus to the card that opened the modal
+            lastTriggerRef.current?.focus({ preventScroll: true });
         };
     }, [selectedField]);
 
-    const openModal = (field: FieldData) => {
+    const openModal = (field: FieldData, trigger: HTMLElement) => {
+        lastTriggerRef.current = trigger;
         setSelectedField(field);
     };
 
@@ -99,11 +102,17 @@ const Fields = () => {
                         <div
                             className="field-card glass-card reveal"
                             key={index}
-                            style={{ transitionDelay: `${index * 0.08}s` }}
-                            onClick={() => openModal(field)}
+                            style={{ '--reveal-delay': `${index * 0.08}s` } as CSSProperties}
+                            onClick={(e) => openModal(field, e.currentTarget)}
                             role="button"
                             tabIndex={0}
-                            onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') openModal(field); }}
+                            aria-haspopup="dialog"
+                            onKeyDown={(e) => {
+                                if (e.key === 'Enter' || e.key === ' ') {
+                                    e.preventDefault(); // stop Space from scrolling the page
+                                    openModal(field, e.currentTarget);
+                                }
+                            }}
                         >
                             <div className="field-icon">{field.icon}</div>
                             <h3 className="field-title">{field.title}</h3>
@@ -120,13 +129,16 @@ const Fields = () => {
             {selectedField && (
                 <div 
                     className="modal-overlay" 
-                    onClick={closeModal} 
-                    role="dialog" 
-                    aria-modal="true"
-                    aria-labelledby="modal-field-title"
+                    onClick={closeModal}
                 >
-                    <div className="modal-content glass-card" onClick={(e) => e.stopPropagation()}>
-                        <button className="modal-close" onClick={closeModal} aria-label="Close modal">
+                    <div
+                        className="modal-content glass-card"
+                        onClick={(e) => e.stopPropagation()}
+                        role="dialog"
+                        aria-modal="true"
+                        aria-labelledby="modal-field-title"
+                    >
+                        <button ref={closeBtnRef} className="modal-close" onClick={closeModal} aria-label="Close modal" type="button">
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                                 <line x1="18" y1="6" x2="6" y2="18"></line>
                                 <line x1="6" y1="6" x2="18" y2="18"></line>
