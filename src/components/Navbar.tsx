@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
 import './Navbar.css';
 import eslfLogo from '../assets/eslflogo-transparent.png';
+import { useLanguage } from '../i18n/context';
 
 const Navbar = () => {
     const [scrolled, setScrolled] = useState(false);
     const [menuOpen, setMenuOpen] = useState(false);
+    const { t, n, lang, toggleLang } = useLanguage();
 
     useEffect(() => {
         const handleScroll = () => {
@@ -56,7 +58,7 @@ const Navbar = () => {
         <header className={`navbar ${scrolled ? 'scrolled' : ''}`}>
             <div className="container nav-container">
                 <div className="nav-logo">
-                    <a href="#home" className="nav-logo-link" onClick={closeMenu} aria-label="ESLF Home">
+                    <a href="#home" className="nav-logo-link" onClick={closeMenu} aria-label={t.nav.home}>
                         <img src={eslfLogo} alt="Emad Soliman Law Firm" className="nav-logo-img" />
                     </a>
                 </div>
@@ -67,19 +69,19 @@ const Navbar = () => {
                 <nav id="primary-navigation" className={`nav-links ${menuOpen ? 'active' : ''}`}>
                     <div className="mobile-menu-header">
                         <img src={eslfLogo} alt="ESLF" className="mobile-drawer-logo" />
-                        <span className="mobile-tagline">Excellence in Legal Advocacy</span>
+                        <span className="mobile-tagline">{t.nav.tagline}</span>
                     </div>
 
-                    <a href="#about" className="nav-link" onClick={closeMenu}>About The Firm</a>
-                    <a href="#fields" className="nav-link" onClick={closeMenu}>Practice Areas</a>
+                    <a href="#about" className="nav-link" onClick={closeMenu}>{t.nav.about}</a>
+                    <a href="#fields" className="nav-link" onClick={closeMenu}>{t.nav.fields}</a>
 
                     <div className="mobile-nav-cta">
                         <a href="#contact" className="btn btn-primary mobile-cta-btn" onClick={closeMenu}>
-                            Consult ESLF
+                            {t.nav.consult}
                         </a>
                         <div className="mobile-contact-quick">
                             <a href="tel:+20224141304" className="quick-contact-item">
-                                <span className="quick-icon">📞</span> (+202) 24141304
+                                <span className="quick-icon">📞</span> <bdi dir="ltr">{n('(+202) 24141304')}</bdi>
                             </a>
                             <a href="mailto:contact@eslf.com" className="quick-contact-item">
                                 <span className="quick-icon">✉️</span> contact@eslf.com
@@ -88,22 +90,32 @@ const Navbar = () => {
                     </div>
                 </nav>
 
-                <div className="nav-cta desktop-only">
-                    <a href="#contact" className="nav-contact-btn">Consult ESLF</a>
+                <div className="nav-actions">
+                    <button
+                        type="button"
+                        className="lang-toggle"
+                        onClick={toggleLang}
+                        aria-label={t.langToggle.aria}
+                        lang={lang === 'ar' ? 'en' : 'ar'}
+                    >
+                        {t.langToggle.label}
+                    </button>
+                    <div className="nav-cta desktop-only">
+                        <a href="#contact" className="nav-contact-btn">{t.nav.consult}</a>
+                    </div>
+                    <button
+                        className={`hamburger ${menuOpen ? 'active' : ''}`}
+                        onClick={toggleMenu}
+                        aria-label={menuOpen ? t.nav.closeMenu : t.nav.openMenu}
+                        aria-expanded={menuOpen}
+                        aria-controls="primary-navigation"
+                        type="button"
+                    >
+                        <span className="bar"></span>
+                        <span className="bar"></span>
+                        <span className="bar"></span>
+                    </button>
                 </div>
-
-                <button
-                    className={`hamburger ${menuOpen ? 'active' : ''}`}
-                    onClick={toggleMenu}
-                    aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
-                    aria-expanded={menuOpen}
-                    aria-controls="primary-navigation"
-                    type="button"
-                >
-                    <span className="bar"></span>
-                    <span className="bar"></span>
-                    <span className="bar"></span>
-                </button>
             </div>
         </header>
     );

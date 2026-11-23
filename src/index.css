@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@300;400;500;600;700;800&family=Cairo:wght@400;500;600;700;800&display=swap');
 
 :root {
   /* ESLF Brand Green Theme Palette (Derived from eslflogo) */
@@ -218,4 +218,34 @@ p {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
+}
+
+/* ===== Arabic / RTL ===== */
+html[lang="ar"] {
+  --font-heading: 'Cairo', 'Outfit', sans-serif;
+  --font-body: 'Cairo', 'Inter', sans-serif;
+}
+
+/* Letter-spacing breaks Arabic letter joining, and uppercase has no meaning */
+html[lang="ar"] body,
+html[lang="ar"] body * {
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+}
+
+html[lang="ar"] h1,
+html[lang="ar"] h2,
+html[lang="ar"] h3,
+html[lang="ar"] h4 {
+  line-height: 1.45;
+}
+
+html[lang="ar"] p {
+  line-height: 1.9;
+}
+
+/* Directional arrows/icons are mirrored in RTL */
+[dir="rtl"] .dir-arrow {
+  display: inline-block;
+  transform: scaleX(-1);
 }

@@ -84,7 +84,7 @@
     width: 0;
     height: 2px;
     bottom: 0;
-    left: 0;
+    inset-inline-start: 0;
     background: linear-gradient(90deg, var(--brand-green-lighter), var(--brand-green-light));
     transition: width var(--transition-fast);
     border-radius: 2px;
@@ -250,7 +250,7 @@
         font-weight: 600;
         padding: 0.85rem 1rem;
         border-radius: 12px;
-        text-align: left;
+        text-align: start;
         display: block;
         transition: all 0.2s ease;
     }
@@ -259,7 +259,7 @@
     .nav-link:active {
         background: rgba(67, 88, 57, 0.2);
         color: var(--brand-green-lighter);
-        padding-left: 1.25rem;
+        padding-inline-start: 1.25rem;
     }
 
     .nav-link::after {
@@ -308,4 +308,54 @@
 @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
+}
+
+/* Actions group: language toggle + CTA + hamburger */
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+}
+
+.lang-toggle {
+    min-width: 44px;
+    height: 40px;
+    padding: 0 0.85rem;
+    border: 1px solid var(--glass-border);
+    border-radius: 50px;
+    background: rgba(255, 255, 255, 0.03);
+    color: var(--brand-green-lighter);
+    font-family: 'Cairo', var(--font-heading);
+    font-size: 0.9rem;
+    font-weight: 700;
+    cursor: pointer;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    transition: all var(--transition-fast);
+    touch-action: manipulation;
+}
+
+.lang-toggle:hover,
+.lang-toggle:focus-visible {
+    border-color: var(--brand-green-light);
+    background: rgba(67, 88, 57, 0.3);
+    color: #ffffff;
+}
+
+/* RTL: mobile drawer slides in from the left */
+@media (max-width: 992px) {
+    [dir="rtl"] .nav-links {
+        right: auto;
+        left: -100%;
+        border-left: none;
+        border-right: 1px solid var(--glass-border);
+        box-shadow: 10px 0 40px rgba(0, 0, 0, 0.6);
+        transition: left 0.4s cubic-bezier(0.16, 1, 0.3, 1), visibility 0s linear 0.4s;
+    }
+
+    [dir="rtl"] .nav-links.active {
+        right: auto;
+        left: 0;
+        transition: left 0.4s cubic-bezier(0.16, 1, 0.3, 1), visibility 0s;
+    }
 }

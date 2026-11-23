@@ -1,7 +1,9 @@
 import type { CSSProperties } from 'react';
 import './Contact.css';
+import { useLanguage } from '../i18n/context';
 
 const Contact = () => {
+    const { t, n } = useLanguage();
     const email = "contact@eslf.com";
     const phone = "(+202) 24141304";
     const address = "38HQ+RJW Nasr City, Cairo, Egypt";
@@ -11,9 +13,9 @@ const Contact = () => {
         <section id="contact" className="contact-section section-padding">
             <div className="container">
                 <div className="contact-header text-center mb-xl reveal">
-                    <div className="section-eyebrow">Direct Engagement</div>
-                    <h2 className="section-title">Get In <span className="text-gradient">Touch</span></h2>
-                    <p className="section-subtitle">Reach out directly for top-tier legal consultation, strategic advocacy, and corporate counsel.</p>
+                    <div className="section-eyebrow">{t.contact.eyebrow}</div>
+                    <h2 className="section-title">{t.contact.titlePrefix} <span className="text-gradient">{t.contact.titleHighlight}</span></h2>
+                    <p className="section-subtitle">{t.contact.subtitle}</p>
                 </div>
 
                 <div className="contact-grid">
@@ -22,8 +24,8 @@ const Contact = () => {
                         <div className="card-header-flex">
                             <span className="card-icon-badge">📍</span>
                             <div>
-                                <h3 className="card-title">Cairo Office</h3>
-                                <p className="card-desc">Visit our office in Nasr City, Cairo.</p>
+                                <h3 className="card-title">{t.contact.officeTitle}</h3>
+                                <p className="card-desc">{t.contact.officeDesc}</p>
                             </div>
                         </div>
 
@@ -32,7 +34,7 @@ const Contact = () => {
                             target="_blank"
                             rel="noopener noreferrer"
                             className="map-container block-link"
-                            aria-label="Open directions in Google Maps"
+                            aria-label={t.contact.mapAria}
                         >
                             <div className="map-placeholder">
                                 <div className="map-marker-anim">
@@ -41,15 +43,15 @@ const Contact = () => {
                                 </div>
                                 <div className="map-overlay-text">
                                     <span className="route-btn">
-                                        <span>Navigate via Maps</span>
-                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                                        <span>{t.contact.navigate}</span>
+                                        <svg className="dir-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
                                     </span>
                                 </div>
                             </div>
                         </a>
                         <div className="address-text">
-                            <strong>Emad Soliman Law Firm (ESLF)</strong><br />
-                            38HQ+RJW Nasr City, Cairo Governorate, Egypt
+                            <strong>{t.contact.firmFull}</strong><br />
+                            {t.contact.addressLine}
                         </div>
                     </div>
 
@@ -58,33 +60,33 @@ const Contact = () => {
                         <div className="card-header-flex">
                             <span className="card-icon-badge">⚖️</span>
                             <div>
-                                <h3 className="card-title">Direct Communications</h3>
-                                <p className="card-desc">Our senior partners and legal team are at your service.</p>
+                                <h3 className="card-title">{t.contact.directTitle}</h3>
+                                <p className="card-desc">{t.contact.directDesc}</p>
                             </div>
                         </div>
 
                         <div className="contact-methods">
-                            <a href={`tel:${phone.replace(/[^0-9+]/g, '')}`} className="contact-method-btn phone-btn" aria-label="Call ESLF directly">
+                            <a href={`tel:${phone.replace(/[^0-9+]/g, '')}`} className="contact-method-btn phone-btn" aria-label={t.contact.callAria}>
                                 <div className="method-icon">📞</div>
                                 <div className="method-info">
-                                    <span className="method-label">Direct Hotline</span>
-                                    <span className="method-value">{phone}</span>
+                                    <span className="method-label">{t.contact.hotline}</span>
+                                    <span className="method-value"><bdi dir="ltr">{n(phone)}</bdi></span>
                                 </div>
-                                <span className="method-action-tag">Call Now</span>
+                                <span className="method-action-tag">{t.contact.callNow}</span>
                             </a>
 
-                            <a href={`mailto:${email}`} className="contact-method-btn email-btn" aria-label="Email ESLF">
+                            <a href={`mailto:${email}`} className="contact-method-btn email-btn" aria-label={t.contact.emailAria}>
                                 <div className="method-icon">✉️</div>
                                 <div className="method-info">
-                                    <span className="method-label">Official Inquiries</span>
-                                    <span className="method-value">{email}</span>
+                                    <span className="method-label">{t.contact.inquiries}</span>
+                                    <span className="method-value"><bdi dir="ltr">{email}</bdi></span>
                                 </div>
-                                <span className="method-action-tag">Send Email</span>
+                                <span className="method-action-tag">{t.contact.sendEmail}</span>
                             </a>
                         </div>
 
                         <div className="social-links-container">
-                            <h4 className="social-title">Professional Networks</h4>
+                            <h4 className="social-title">{t.contact.networks}</h4>
                             <div className="social-icons">
                                 <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="LinkedIn">
                                     <span>In</span>

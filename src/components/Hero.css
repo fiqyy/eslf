@@ -300,3 +300,12 @@
         font-size: 0.7rem;
     }
 }
+
+/* RTL: mirror the forward arrow */
+[dir="rtl"] .btn-icon {
+    transform: scaleX(-1);
+}
+
+[dir="rtl"] .btn-primary:hover .btn-icon {
+    transform: scaleX(-1) translateX(3px);
+}

@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef, type CSSProperties } from 'react';
 import './Fields.css';
+import { useLanguage } from '../i18n/context';
 
 interface FieldData {
     title: string;
@@ -8,65 +9,29 @@ interface FieldData {
     details: string;
 }
 
+const FIELD_ICONS = ['🏢', '⚖️', '🤝', '💡', '📋', '📝', '🏗️'];
+
 const Fields = () => {
-    const [selectedField, setSelectedField] = useState<FieldData | null>(null);
+    const { t } = useLanguage();
+    // Store the index so an open modal re-renders in the new language on toggle
+    const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
     const closeBtnRef = useRef<HTMLButtonElement>(null);
     const lastTriggerRef = useRef<HTMLElement | null>(null);
 
-    const fields: FieldData[] = [
-        {
-            title: "Corporate & Commercial",
-            icon: "🏢",
-            desc: "Comprehensive legal support for enterprises, including M&A, restructuring, and governance.",
-            details: "We advise on complex domestic and cross-border mergers and acquisitions, equity offerings, joint ventures, and restructuring transactions. Our attorneys possess extensive depth in company incorporation, hosting general assemblies and board meetings, formulating internal bylaws, and navigating regulatory compliance across the Egyptian and MENA markets."
-        },
-        {
-            title: "Litigation & Dispute Strategy",
-            icon: "⚖️",
-            desc: "Robust representation in commercial, civil, administrative, and appellate proceedings.",
-            details: "The ESLF litigation team combines market-leading local court advocacy with a strategic approach to client business problems. We specialize in managing complex multi-party claims, shareholder disputes, asset recovery, and commercial litigation, working closely across practice areas to mitigate regulatory and judicial risks."
-        },
-        {
-            title: "Arbitration & Mediation (ADR)",
-            icon: "🤝",
-            desc: "Expert handling of institutional arbitration (CRCICA, ICC) and private mediation.",
-            details: "We guide clients through alternative dispute resolution mechanisms, starting with reconciliation and mediation, through to institutional and ad hoc arbitration. Our lawyers regularly appear before leading arbitration forums such as the Cairo Regional Centre for International Commercial Arbitration (CRCICA) and the International Chamber of Commerce (ICC)."
-        },
-        {
-            title: "Intellectual Property Rights",
-            icon: "💡",
-            desc: "Protection for trademarks, patents, copyrights, trade secrets, and licensing agreements.",
-            details: "Our IP practice provides comprehensive protection, portfolio management, and enforcement for critical intellectual property assets. We handle trademark registration, patent litigation, anti-counterfeiting enforcement programs, technology transfer agreements, and complex licensing across diverse industrial and digital sectors."
-        },
-        {
-            title: "Strategic Legal Consultancy",
-            icon: "📋",
-            desc: "Tailored strategic counsel addressing regulatory landscapes, compliance, and risk management.",
-            details: "ESLF provides high-level legal consultancy services to multinational corporations, governmental bodies, and regional institutions. We deliver proactive regulatory roadmaps, legislative analyses, foreign investment advisory, and compliance frameworks customized to each client's strategic objectives."
-        },
-        {
-            title: "Contract Management & Drafting",
-            icon: "📝",
-            desc: "Meticulous drafting, review, negotiation, and lifecycle management of commercial agreements.",
-            details: "Our contract attorneys provide rigorous contract lifecycle drafting and negotiation. From initial risk assessment and drafting tailored contractual covenants to execution and post-closing compliance, we safeguard our clients' rights and commercial value across all transactions."
-        },
-        {
-            title: "Real Estate & Infrastructure",
-            icon: "🏗️",
-            desc: "Navigating major property transactions, development projects, zoning, and licensing.",
-            details: "Acting for property developers, major investment funds, and industrial leaders, we advise on the entire real estate lifecycle—from site acquisition, zoning approvals, and governmental licensing to construction contracting, commercial leasing, and asset disposition."
-        }
-    ];
+    const fields: FieldData[] = t.fields.items.map((item, i) => ({ ...item, icon: FIELD_ICONS[i] }));
+
+    const selectedField = selectedIndex === null ? null : fields[selectedIndex];
+    const isOpen = selectedIndex !== null;
 
     useEffect(() => {
-        if (!selectedField) return;
+        if (!isOpen) return;
 
         document.body.style.overflow = 'hidden';
         document.body.style.touchAction = 'none';
         closeBtnRef.current?.focus();
 
         const handleKeyDown = (e: KeyboardEvent) => {
-            if (e.key === 'Escape') setSelectedField(null);
+            if (e.key === 'Escape') setSelectedIndex(null);
         };
         window.addEventListener('keydown', handleKeyDown);
 
@@ -77,24 +42,24 @@ const Fields = () => {
             // Return focus to the card that opened the modal
             lastTriggerRef.current?.focus({ preventScroll: true });
         };
-    }, [selectedField]);
+    }, [isOpen]);
 
-    const openModal = (field: FieldData, trigger: HTMLElement) => {
+    const openModal = (index: number, trigger: HTMLElement) => {
         lastTriggerRef.current = trigger;
-        setSelectedField(field);
+        setSelectedIndex(index);
     };
 
     const closeModal = () => {
-        setSelectedField(null);
+        setSelectedIndex(null);
     };
 
     return (
         <section id="fields" className="fields-section section-padding">
             <div className="container">
                 <div className="text-center mb-xl reveal">
-                    <div className="section-eyebrow">Practice Expertise</div>
-                    <h2 className="section-title">Our <span className="text-gradient">Practice Areas</span></h2>
-                    <p className="section-subtitle">Delivering specialized legal solutions and tactical counsel across core industry sectors.</p>
+                    <div className="section-eyebrow">{t.fields.eyebrow}</div>
+                    <h2 className="section-title">{t.fields.titlePrefix} <span className="text-gradient">{t.fields.titleHighlight}</span></h2>
+                    <p className="section-subtitle">{t.fields.subtitle}</p>
                 </div>
 
                 <div className="fields-grid">
@@ -103,14 +68,14 @@ const Fields = () => {
                             className="field-card glass-card reveal"
                             key={index}
                             style={{ '--reveal-delay': `${index * 0.08}s` } as CSSProperties}
-                            onClick={(e) => openModal(field, e.currentTarget)}
+                            onClick={(e) => openModal(index, e.currentTarget)}
                             role="button"
                             tabIndex={0}
                             aria-haspopup="dialog"
                             onKeyDown={(e) => {
                                 if (e.key === 'Enter' || e.key === ' ') {
                                     e.preventDefault(); // stop Space from scrolling the page
-                                    openModal(field, e.currentTarget);
+                                    openModal(index, e.currentTarget);
                                 }
                             }}
                         >
@@ -118,7 +83,7 @@ const Fields = () => {
                             <h3 className="field-title">{field.title}</h3>
                             <p className="field-desc">{field.desc}</p>
                             <div className="field-action">
-                                <span className="learn-more">Explore Details &rarr;</span>
+                                <span className="learn-more">{t.fields.explore} <span className="dir-arrow" aria-hidden="true">&rarr;</span></span>
                             </div>
                         </div>
                     ))}
@@ -138,7 +103,7 @@ const Fields = () => {
                         aria-modal="true"
                         aria-labelledby="modal-field-title"
                     >
-                        <button ref={closeBtnRef} className="modal-close" onClick={closeModal} aria-label="Close modal" type="button">
+                        <button ref={closeBtnRef} className="modal-close" onClick={closeModal} aria-label={t.fields.closeAria} type="button">
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                                 <line x1="18" y1="6" x2="6" y2="18"></line>
                                 <line x1="6" y1="6" x2="18" y2="18"></line>
@@ -153,10 +118,10 @@ const Fields = () => {
                         </div>
                         <div className="modal-footer">
                             <a href="#contact" className="btn btn-primary modal-cta-btn" onClick={closeModal}>
-                                Consult on this Practice Area
+                                {t.fields.consultCta}
                             </a>
                             <button className="btn btn-outline modal-close-btn" onClick={closeModal} type="button">
-                                Close
+                                {t.fields.close}
                             </button>
                         </div>
                     </div>
