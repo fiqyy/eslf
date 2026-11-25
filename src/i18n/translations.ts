@@ -42,7 +42,6 @@ export interface Translation {
         statTop: string;
         statFocus: string;
         logoAlt: string;
-        firmName: string;
         badge: string;
     };
     fields: {
@@ -134,7 +133,6 @@ export const translations: Record<Language, Translation> = {
             statTop: 'Tier Directory Rank',
             statFocus: 'Client Focus',
             logoAlt: 'Emad Soliman Law Firm Emblem',
-            firmName: 'Emad Soliman Law Firm',
             badge: 'Cairo Headquarters • Est. 1987',
         },
         fields: {
@@ -260,7 +258,6 @@ export const translations: Record<Language, Translation> = {
             statTop: 'في التصنيفات القانونية',
             statFocus: 'تركيز على العميل',
             logoAlt: 'شعار مكتب عماد سليمان للمحاماة',
-            firmName: 'مكتب عماد سليمان للمحاماة',
             badge: 'المقر الرئيسي بالقاهرة • تأسس عام 1987',
         },
         fields: {

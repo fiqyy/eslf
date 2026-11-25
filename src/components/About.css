@@ -167,14 +167,6 @@
     filter: drop-shadow(0 4px 15px rgba(0, 0, 0, 0.8)) drop-shadow(0 0 24px rgba(124, 168, 107, 0.55));
 }
 
-.image-overlay-text {
-    font-family: var(--font-heading);
-    font-size: 1.25rem;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-primary);
-}
 
 .about-badge-tag {
     display: inline-block;
@@ -241,9 +233,5 @@
 
     .about-brand-img {
         max-width: 190px;
-    }
-
-    .image-overlay-text {
-        font-size: 1.05rem;
     }
 }

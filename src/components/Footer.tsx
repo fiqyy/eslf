@@ -1,5 +1,5 @@
 import './Footer.css';
-import eslfLogo from '../assets/eslflogo-transparent.png';
+import eslfLogo from '../assets/eslf-logo-horizontal.png';
 import { useLanguage } from '../i18n/context';
 
 const Footer = () => {

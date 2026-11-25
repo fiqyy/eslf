@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import './Navbar.css';
-import eslfLogo from '../assets/eslflogo-transparent.png';
+import eslfLogo from '../assets/eslf-logo-horizontal.png';
 import { useLanguage } from '../i18n/context';
 
 const Navbar = () => {

@@ -1,5 +1,5 @@
 import './About.css';
-import eslfLogo from '../assets/eslflogo-transparent.png';
+import eslfLogo from '../assets/eslf-logo.png';
 import { useLanguage } from '../i18n/context';
 
 const About = () => {
@@ -47,7 +47,6 @@ const About = () => {
                                     <div className="about-logo-hero-wrap">
                                         <img src={eslfLogo} alt={t.about.logoAlt} className="about-brand-img" />
                                     </div>
-                                    <div className="image-overlay-text">{t.about.firmName}</div>
                                     <div className="about-badge-tag">{t.about.badge}</div>
                                 </div>
                             </div>
