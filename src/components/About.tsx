@@ -1,5 +1,5 @@
 import './About.css';
-import eslfLogo from '../assets/eslf-logo.png';
+import founderPhoto from '../assets/emad-soliman.jpeg';
 import { useLanguage } from '../i18n/context';
 
 const About = () => {
@@ -38,18 +38,20 @@ const About = () => {
 
                     <div className="about-image reveal">
                         <div className="glass-card image-card">
-                            <div className="image-placeholder">
-                                <div className="abstract-shape shape-1"></div>
-                                <div className="abstract-shape shape-2"></div>
-                                <div className="abstract-shape shape-3"></div>
-
-                                <div className="about-logo-container">
-                                    <div className="about-logo-hero-wrap">
-                                        <img src={eslfLogo} alt={t.about.logoAlt} className="about-brand-img" />
-                                    </div>
-                                    <div className="about-badge-tag">{t.about.badge}</div>
-                                </div>
-                            </div>
+                            <figure className="founder-photo">
+                                <img
+                                    src={founderPhoto}
+                                    alt={t.about.photoAlt}
+                                    className="founder-photo-img"
+                                    loading="lazy"
+                                    decoding="async"
+                                />
+                                <figcaption className="founder-caption">
+                                    <span className="founder-name">{t.about.founderName}</span>
+                                    <span className="founder-role">{t.about.founderRole}</span>
+                                    <span className="about-badge-tag">{t.about.badge}</span>
+                                </figcaption>
+                            </figure>
                         </div>
                     </div>
                 </div>

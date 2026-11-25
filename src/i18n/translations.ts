@@ -41,7 +41,9 @@ export interface Translation {
         statTopValue: string;
         statTop: string;
         statFocus: string;
-        logoAlt: string;
+        photoAlt: string;
+        founderName: string;
+        founderRole: string;
         badge: string;
     };
     fields: {
@@ -132,7 +134,9 @@ export const translations: Record<Language, Translation> = {
             statTopValue: 'Top',
             statTop: 'Tier Directory Rank',
             statFocus: 'Client Focus',
-            logoAlt: 'Emad Soliman Law Firm Emblem',
+            photoAlt: 'Mr. Emad Soliman, founder of Emad Soliman Law Firm, signing documents at his desk',
+            founderName: 'Mr. Emad Soliman',
+            founderRole: 'Founder',
             badge: 'Cairo Headquarters • Est. 1987',
         },
         fields: {
@@ -257,7 +261,9 @@ export const translations: Record<Language, Translation> = {
             statTopValue: 'الصدارة',
             statTop: 'في التصنيفات القانونية',
             statFocus: 'تركيز على العميل',
-            logoAlt: 'شعار مكتب عماد سليمان للمحاماة',
+            photoAlt: 'الأستاذ عماد سليمان، مؤسس مكتب عماد سليمان للمحاماة، يوقّع المستندات على مكتبه',
+            founderName: 'الأستاذ عماد سليمان',
+            founderRole: 'المؤسس',
             badge: 'المقر الرئيسي بالقاهرة • تأسس عام 1987',
         },
         fields: {
